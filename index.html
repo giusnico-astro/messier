@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Messier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Catalogo Messier</h1>
+        <div class="subtitle">Fotografie a cura di Giuseppe Nicosia</div>
+
+        <div class="input-group">
+            <input type="text" id="searchInput" placeholder="Cerca oggetto (es. M1, 31, 45)..." autocomplete="off">
+        </div>
+
+        <div id="resultCard" class="result-card">
+            <div class="image-container" id="imgContainer">
+                <img id="objImage" src="" alt="Messier Object">
+            </div>
+            <div class="card-header">
+                <div>
+                    <div id="objId" class="object-id">M1</div>
+                    <div id="objCommonName" class="common-name">Nebulosa Granchio</div>
+                </div>
+                <div id="objNgc" class="object-ngc">NGC 1952</div>
+            </div>
+
+            <div class="grid-info">
+                <div class="info-item">
+                    <span class="label">Tipo</span>
+                    <span id="objType" class="value">Resto di supernova</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Costellazione</span>
+                    <span id="objConstellation" class="value">Toro</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Diametro</span>
+                    <span id="objDiameter" class="value">6x4 minuti d'arco</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Magnitudine</span>
+                    <span id="objMagnitude" class="value">8.4</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Distanza</span>
+                    <span id="objDistance" class="value">6.500 al</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Visibilità (Stagione)</span>
+                    <span id="objSeason" class="value">Inverno</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Ascensione Retta</span>
+                    <span id="objRA" class="value">05h 34.5m</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Declinazione</span>
+                    <span id="objDec" class="value">+22° 01'</span>
+                </div>
+            </div>
+
+            <div id="objDescription" class="description">
+                Il residuo della supernova osservata nel 1054 d.C.
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message">
+            Oggetto non trovato. Prova con un numero da 1 a 110 (es. M31 o 31).
+        </div>
+    </div>
+
+    <!-- Load data first -->
+    <script src="data.js"></script>
+    <!-- Load logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
