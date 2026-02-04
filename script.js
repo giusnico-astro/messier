@@ -51,20 +51,33 @@ document.addEventListener('DOMContentLoaded', () => {
             // Handle Image
             const imgContainer = document.getElementById('imgContainer');
             const imgElement = document.getElementById('objImage');
+            const imgLink = document.getElementById('imgLink');
 
-            // Try to load image
-            imgElement.style.display = 'block'; // Reset display
-            imgElement.src = `images/${object.id}.jpg`;
+            if (imgContainer && imgElement) {
+                const extensions = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'PNG'];
+                let extIndex = 0;
 
-            // Hide container if image fails to load (handled via error event)
-            imgElement.onerror = function () {
-                imgContainer.classList.remove('active');
-            };
+                const tryLoadImage = () => {
+                    if (extIndex >= extensions.length) {
+                        // All attempts failed
+                        imgContainer.classList.remove('active');
+                        return;
+                    }
+                    // Try next extension
+                    imgElement.onload = () => {
+                        imgContainer.classList.add('active');
+                        if (imgLink) imgLink.href = imgElement.src;
+                    };
+                    imgElement.onerror = () => {
+                        extIndex++;
+                        tryLoadImage();
+                    };
+                    imgElement.src = `images/${object.id}.${extensions[extIndex]}`;
+                };
 
-            // Show container when image loads
-            imgElement.onload = function () {
-                imgContainer.classList.add('active');
-            };
+                // Start loading attempt
+                tryLoadImage();
+            }
 
             // Show card, hide error
             resultCard.classList.add('active');
